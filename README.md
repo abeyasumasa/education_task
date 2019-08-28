@@ -5,8 +5,13 @@
     - email string
     - password_digest string
 - task
+    - id  integer
     - user_id integer
     - content text
     - expiration date date
     - priority string
     - states string
+- label
+    - id  integer
+    - task_id integer
+    - classification text
