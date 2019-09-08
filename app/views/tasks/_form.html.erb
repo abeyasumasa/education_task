@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="task_name">
-    <%= form.label :name %>
+    <label><%= t('view.name') %></label>
     <%= form.text_field :name %>
   </div>
   <div class="task_content">
-    <%= form.label :content %>
+    <label><%= t('view.content') %></label>
     <%= form.text_field :content %>
   </div>
   <%= form.submit %>
