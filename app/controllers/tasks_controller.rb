@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks =Task.desc_sort
+    if
+      @tasks =Task.all
+    else
+      @tasks =Task.desc_sort
+    end
   end
 
   def new
