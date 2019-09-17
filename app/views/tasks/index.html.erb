@@ -24,4 +24,4 @@
 <br>
 
 <%= link_to '新しくブログを投稿する', new_task_path %>
-<%= link_to 'タスクを終了期限順に並び替える', sort: "task" %>
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>

@@ -2,10 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if
-      @tasks =Task.all
-    else
+    if params[:sort_expired] == "true"
       @tasks =Task.desc_sort
+    else
+      @tasks =Task.all
     end
   end
 
