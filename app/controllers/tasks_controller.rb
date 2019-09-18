@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:sort_expired] == "true"
+    if params[:sort_created] == "true"
       @tasks =Task.desc_sort
     else
       @tasks =Task.all
