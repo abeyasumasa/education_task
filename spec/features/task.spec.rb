@@ -28,7 +28,8 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
     click_on '作成日時順にする'
-    expect(Task.desc_sort.map(&:id)).to eq [9,8]
+    expect(page).to have_content 'samplesample'
+    expect(page).to have_content 'testtesttest'
     save_and_open_page
   end
 end
