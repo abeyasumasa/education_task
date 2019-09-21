@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
-  validates :content, presence: true
+  validates :name, presence: true
+  validates :content, presence: true, length: { maximum: 100 }
 
   def self.desc_sort
      order(created_at: :desc)
