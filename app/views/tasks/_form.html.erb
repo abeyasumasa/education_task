@@ -13,11 +13,11 @@
 
   <div class="task_name">
     <label><%= t('view.name') %></label>
-    <%= form.text_field :name %>
+    <%= form.text_field :name , id: 'Name' %>
   </div>
   <div class="task_content">
     <label><%= t('view.content') %></label>
-    <%= form.text_field :content %>
+    <%= form.text_field :content , id: 'Content' %>
   </div>
   <%= form.submit %>
 <% end %>
