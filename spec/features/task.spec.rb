@@ -3,9 +3,11 @@ RSpec.feature "タスク管理機能", type: :feature do
   background do
     FactoryBot.create(:task, content: 'testtesttest' ,created_at: Time.current + 1.days)
     FactoryBot.create(:second_task, content: 'samplesample', created_at: Time.current + 2.days)
+    page.driver.browser.authorize('admin','password')
   end
   scenario "タスク一覧のテスト" do
   visit tasks_path
+  save_and_open_page
   expect(page).to have_content 'testtesttest'
   expect(page).to have_content 'samplesample'
 
@@ -28,8 +30,9 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
     click_on '作成日時順にする'
-    expect(page).to have_content 'samplesample'
-    expect(page).to have_content 'testtesttest'
-    save_and_open_page
+    tds = page.all('td')
+    binding.pry
+    expect(tds[1]).to have_content 'samplesample'
+    expect(tds[7]).to have_content 'testtesttest'
   end
 end
