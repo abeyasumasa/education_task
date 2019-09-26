@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   def index
     if params[:sort_created] == "true"
       @tasks =Task.desc_sort
+    elsif params[:sort_expired] == "true"
+      @tasks =Task.sort_expired
     else
       @tasks =Task.all
     end
@@ -43,7 +45,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :content)
+    params.require(:task).permit(:name, :content, :expiration_date)
   end
 
   def set_task

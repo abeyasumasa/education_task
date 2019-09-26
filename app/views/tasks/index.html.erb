@@ -7,6 +7,7 @@
     <th><%= t('view.name') %></th>
     <th><%= t('view.content') %></th>
     <th>作成日</th>
+    <th>終了期限</th>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -14,6 +15,7 @@
     <td><%= task.name %></td>
     <td id = Content><%= task.content %></td>
     <td><%= task.created_at %></td>
+    <td><%= task.expiration_date %></td>
     <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
     <td><%= link_to "タスクを編集する", edit_task_path(task.id) %></td>
     <td><%= link_to 'ブログを削除する', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
@@ -25,3 +27,4 @@
 
 <%= link_to '新しくブログを投稿する', new_task_path %>
 <%= link_to "作成日時順にする", tasks_path(sort_created: "true") %>
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>

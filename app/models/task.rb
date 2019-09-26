@@ -5,4 +5,8 @@ class Task < ApplicationRecord
   def self.desc_sort
      order(created_at: :desc)
   end
+
+  def self.sort_expired
+     order(expiration_date: :desc)
+  end
 end

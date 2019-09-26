@@ -19,6 +19,10 @@
     <label><%= t('view.content') %></label>
     <%= form.text_field :content , id: 'Content' %>
   </div>
+  <div class="task_expiration_date">
+    <label><%= t('view.expiration_date') %></label>
+    <%= form.text_field :expiration_date %>
+  </div>
   <%= form.submit %>
 <% end %>
 
