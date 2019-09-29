@@ -2,6 +2,6 @@
 
 <p><%= t('view.name') %>:<%= @task.name%></p>
 <p><%= t('view.content') %>: <%= @task.content %></p>
-<p><%= t('view.expiration_date') %>: <%= @task.expiration_date %></p>
+<p><%= t('view.expiration_date') %>: <%= simple_time(@task.expiration_date)%></p>
 
 <%= link_to 'タスク一覧画面に戻る', tasks_path %>
