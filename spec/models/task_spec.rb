@@ -13,7 +13,7 @@ RSpec.describe Task, type: :model do
   end
 
   it "titleとcontentに内容が記載されていればバリデーションが通る" do
-    task = Task.new(name: '成功テスト', content: '成功テスト')
+    task = Task.new(name: '成功テスト', content: '成功テスト',expiration_date:'2019/9/30')
     expect(task).to be_valid
   end
 end
