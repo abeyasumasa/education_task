@@ -1,6 +1,14 @@
 <h1>タスク一覧</h1>
 
 <p><%= notice %></p>
+  <%= form_with(model: @task, url:tasks_path, method: :get, local: true) do |form| %>
+    <%= form.label :title_search, "タイトル検索"%>
+    <%= form.text_field :name,id: 'Title' %>
+    <%= form.label :title_search, "状態検索"%>
+    <%= form.select :state , ["未着手", "着手中" ,"完了"] , :prompt => "",id: 'State'%>
+    <%= form.hidden_field :search, value:'true' %>
+    <%= form.submit %>
+<%end%>
 
 <table>
   <tr>
@@ -8,6 +16,7 @@
     <th><%= t('view.content') %></th>
     <th>作成日</th>
     <th>終了期限</th>
+    <th>ステータス</th>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -16,9 +25,10 @@
     <td id = Content><%= task.content %></td>
     <td><%= simple_time(task.created_at) %></td>
     <td><%= simple_time(task.expiration_date) %></td>
-    <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
-    <td><%= link_to "タスクを編集する", edit_task_path(task.id) %></td>
-    <td><%= link_to 'ブログを削除する', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    <td><%= task.state %></td>
+    <td><%= link_to '詳細', task_path(task.id) %></td>
+    <td><%= link_to "編集", edit_task_path(task.id) %></td>
+    <td><%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
   </tr>
 <% end %>
 </table>
