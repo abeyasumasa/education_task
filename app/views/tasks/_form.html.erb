@@ -27,6 +27,10 @@
     <label><%= t('view.state') %></label>
     <%= form.select :state , ["未着手", "着手中" ,"完了"] , :prompt => "選択してください"%>
   </div>
+  <div class="task_priority">
+    <label><%= t('view.priority') %></label>
+    <%= form.select :priority ,Task.priorities.keys, :selected=>Task.priorities[@task.priority] %>
+  </div>
   <%= form.submit %>
 <% end %>
 
