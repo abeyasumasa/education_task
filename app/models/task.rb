@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
   validates :name, presence: true
   validates :content, presence: true, length: { maximum: 100 }
-  #validates :expiration_date, presence: true
+  validates :expiration_date, presence: true
+  validates :state, presence: true
 
   scope :desc_sort, -> {order(created_at: :desc)}
   scope :sort_expired, -> {order(expiration_date: :desc)}
