@@ -47,7 +47,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクのタイトル検索ができているかテスト" do
     visit tasks_path
     fill_in 'Title' , with: 'Factoryで作ったデフォルトのタイトル１'
-    click_on '登録する'
+    click_on '検索する'
     tds = page.all('td')
     expect(tds[0]).to have_content 'Factoryで作ったデフォルトのタイトル１'
   end
@@ -55,7 +55,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスクのステータス検索ができているかテスト" do
     visit tasks_path
     select "未着手", from: "task_state"
-    click_on '登録する'
+    click_on '検索する'
     tds = page.all('td')
     expect(tds[4]).to have_content '未着手'
   end
@@ -64,7 +64,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     visit tasks_path
     fill_in 'Title' , with: 'Factoryで作ったデフォルトのタイトル１'
     select "未着手", from: "task_state"
-    click_on '登録する'
+    click_on '検索する'
     tds = page.all('td')
     expect(tds[0]).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(tds[4]).to have_content '未着手'
