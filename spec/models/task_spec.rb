@@ -27,4 +27,24 @@ RSpec.describe Task, type: :model do
     expect(task).to be_valid
   end
 
+  describe 'scopeチェック' do
+    before do
+      Task.create(name: "1st", content: "1st", expiration_date: '2019/10/21', state: "未着手")
+      Task.create(name: "1st", content: "2nd", expiration_date: '2019/10/21', state: "未着手")
+      Task.create(name: "2nd", content: "1st", expiration_date: '2019/10/21', state: "完了")
+    end
+
+    it 'タイトルのみ検索時の場合' do
+      expect(Task.search_name("1st").count).to eq 2
+    end
+
+    it 'ステータスのみ検索時の場合' do
+      expect(Task.search_state("未着手").count).to eq 2
+    end
+
+    it 'タイトル、ステータス両方の場合の検索時の場合' do
+      expect(Task.search_name_and_state('1st', '未着手').count).to eq 2
+    end
+
+  end
 end
