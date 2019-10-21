@@ -23,6 +23,10 @@
     <label><%= t('view.expiration_date') %></label>
     <%= form.date_field :expiration_date, id: 'Expiration_date' %>
   </div>
+  <div class="task_state">
+    <label><%= t('view.state') %></label>
+    <%= form.select :state , ["未着手", "着手中" ,"完了"] , :prompt => "選択してください"%>
+  </div>
   <%= form.submit %>
 <% end %>
 
