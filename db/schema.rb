@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_211508) do
     t.text "content", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "expiration_date", null: false
+    t.datetime "expiration_date"
     t.string "state"
     t.integer "priority"
     t.index ["name"], name: "index_tasks_on_name"

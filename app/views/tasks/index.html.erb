@@ -7,7 +7,7 @@
     <%= form.label :title_search, "状態検索"%>
     <%= form.select :state , ["未着手", "着手中" ,"完了"] , :prompt => "",id: 'State'%>
     <%= form.hidden_field :search, value:'true' %>
-    <%= form.submit %>
+    <%= form.submit('検索する')  %>
 <%end%>
 
 <table>
