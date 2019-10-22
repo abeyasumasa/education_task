@@ -7,7 +7,7 @@
     <%= form.label :title_search, "状態検索"%>
     <%= form.select :state , ["未着手", "着手中" ,"完了"] , :prompt => "",id: 'State'%>
     <%= form.hidden_field :search, value:'true' %>
-    <%= form.submit('検索する')  %>
+    <%= form.submit('検索する') %>
 <%end%>
 
 <table>
@@ -37,7 +37,7 @@
 
 <br>
 
-<%= link_to '新しくブログを投稿する', new_task_path %>
+<%= link_to '新しくタスクを投稿する', new_task_path %>
 <%= link_to "作成日時順にする", tasks_path(sort_created: "true") %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
 <%= link_to "優先度でソートする", tasks_path(priority: "true") %>
