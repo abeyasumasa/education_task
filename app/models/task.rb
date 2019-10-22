@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  paginates_per 5
   validates :name, presence: true
   validates :content, presence: true, length: { maximum: 100 }
   validates :expiration_date, presence: true

@@ -18,6 +18,7 @@ RSpec.feature "タスク管理機能", type: :feature do
       fill_in 'Name' , with: 'cording'
       fill_in 'Content' , with: 'プログラムを作成するため'
       fill_in 'Expiration_date' , with: '2019/9/30'
+      select "未着手", from: "task_state"
       click_on '登録する'
       expect(page).to have_content 'cording'
       expect(page).to have_content  'プログラムを作成するため'
