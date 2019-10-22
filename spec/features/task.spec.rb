@@ -77,5 +77,4 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(tds[5]).to have_content '高'
     save_and_open_page
   end
-
 end
