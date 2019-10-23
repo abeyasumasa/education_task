@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks =Task.list(params)
+    @tasks =Task.page(params[:page]).list(params)
   end
 
   def new
