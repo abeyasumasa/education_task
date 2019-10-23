@@ -12,6 +12,7 @@
 
 <table class = "task_table" >
   <tr>
+    <th> ユーザー名</th>
     <th><%= t('view.name') %></th>
     <th><%= t('view.content') %></th>
     <th>作成日</th>
@@ -22,6 +23,7 @@
 
 <% @tasks.each do |task| %>
   <tr>
+    
     <td><%= task.name %></td>
     <td id = Content><%= task.content %></td>
     <td><%= simple_time(task.created_at) %></td>
