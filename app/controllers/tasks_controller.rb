@@ -3,7 +3,11 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks =Task.page(params[:page]).list(params)
+    if logged_in?
+      @tasks =Task.where(user_id: current_user.id).page(params[:page]).list(params)
+    else
+      redirect_to new_session_path
+    end
   end
 
   def new
@@ -11,7 +15,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to task_path(@task.id), notice: "ブログを作成しました！"
     else
@@ -39,8 +43,9 @@ class TasksController < ApplicationController
   end
 
   private
+
   def task_params
-    params.require(:task).permit(:name, :content, :expiration_date, :state, :priority)
+    params.require(:task).permit(:name, :content, :expiration_date, :state, :priority, :user_id)
   end
 
   def set_task
