@@ -7,7 +7,7 @@ FactoryBot.define do
     expiration_date{ Time.current + 1.days }
     state{ '未着手' }
     priority { '高' }
-    user_id {'2'}
+    user_id {'3'}
   end
 
   factory :second_task, class: Task do
@@ -17,7 +17,7 @@ FactoryBot.define do
     expiration_date{ Time.current + 2.days }
     state{ '着手中' }
     priority { '低' }
-    user_id {'2'}
+    user_id {'3'}
   end
 
 end
