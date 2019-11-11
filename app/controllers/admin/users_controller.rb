@@ -34,24 +34,41 @@ class Admin::UsersController < ApplicationController
       end
 
       def destroy
-        @user.destroy
-        redirect_to admin_users_path, notice:"ユーザーを削除しました！"
+        if @user.destroy
+          redirect_to admin_users_path, notice:"ユーザーを削除しました！"
+        else
+          redirect_to admin_users_path, notice:"管理ユーザーが存在しなくなるため、削除できません"
+        end
       end
 
 
     private
+
+    def admin_user
+      if logged_in?
+        unless current_user.admin
+          redirect_to tasks_path ,notice: "管理者権限を持ったユーザでログインをしてください。"
+        end
+      elsif
+        redirect_to tasks_path ,notice: "ログインをしてください。"
+      end
+    end
+  
+    def anotheradmin_check
+      if User.admin_count == 1 and @user.admin
+        return false
+      else
+        return true
+      end
+    end
+
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation,:user_image)
+                                   :password_confirmation,:user_image,:admin)
     end
 
     def set_user
       @user = User.find(params[:id])
-    end
-
-    def admin_user
-      flash[:success] = "権限がありません"
-      redirect_to(root_path) unless current_user.admin?
     end
 
 end

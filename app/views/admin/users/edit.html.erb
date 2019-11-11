@@ -15,9 +15,15 @@
     <%= f.label :password %>
     <%= f.password_field :password,id: 'Password' %>
   </div>
+
   <div class='password_confirmation'>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation,id: 'Password_confirmation' %>
+  </div>
+
+  <div class='admin_grant'>
+    <%= f.label :管理者権限の付与 %>
+    <%= f.check_box :admin ,id: 'Admin_grant_checkbox', :as => :boolean %>
   </div>
 
   <%= f.submit "更新" %>
