@@ -7,10 +7,13 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   has_many :tasks, dependent: :destroy
   has_secure_password
+  scope :admin_count, -> {where(admin: 'true').count}
 
   private
 
   def anotheradmin_check
-    throw(:abort) if User.where(admin: true).count <= 2 && self.admin?
+    if User.admin_count == 1 and admin?
+      throw :abort
+    end
   end
 end
