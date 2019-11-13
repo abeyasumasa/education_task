@@ -10,6 +10,7 @@ RSpec.feature "ユーザー登録機能", type: :feature do
 
    scenario "ユーザー登録テスト" do
      visit new_user_path
+     save_and_open_page
      fill_in 'Name' , with: 'spectestuser01'
      fill_in 'Email' , with: 'spectestuser01@gmail.com'
      fill_in 'Password' , with: 'password'
