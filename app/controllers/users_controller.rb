@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user,{only: [:show]}
 
     def new
-      @user = User.new
+      if logged_in?
+        redirect_to tasks_path
+      else
+        @user = User.new
+      end
     end
 
   def create
