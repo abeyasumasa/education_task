@@ -1,0 +1,10 @@
+<h1>タスク一覧　ユーザ:<%= @user.name %> </h1>
+
+<% @user.tasks.each do |task| %>
+  <p><%= t('view.name') %>:<%= task.name%></p>
+  <p><%= t('view.content') %>: <%= task.content %></p>
+  <p><%= t('view.expiration_date') %>: <%= simple_time(task.expiration_date)%></p>
+  <p><%= t('view.priority') %>: <%= task.priority %></p>
+<% end %>
+
+<%= link_to '戻る', admin_users_path %>
