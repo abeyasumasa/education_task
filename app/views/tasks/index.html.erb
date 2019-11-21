@@ -3,8 +3,10 @@
   <%= form_with(model: @task, url:tasks_path, method: :get, local: true) do |form| %>
     <%= form.label :title_search, "タイトル検索"%>
     <%= form.text_field :name,id: 'Title' %>
-    <%= form.label :title_search, "状態検索"%>
+    <%= form.label :status_search, "状態検索"%>
     <%= form.select :state , ["未着手", "着手中" ,"完了"] , :prompt => "",id: 'State'%>
+    <%= form.label :tag_search, "タグ検索"%>
+    <%= form.select("tag_id", Tag.pluck(:title, :id), { include_blank: '選択してください' },id: 'Tag') %>
     <%= form.hidden_field :search, value:'true' %>
     <%= form.submit('検索する') %>
 <%end%>
@@ -40,6 +42,7 @@
 <br>
 
 <%= link_to '新しくタスクを投稿する', new_task_path, class: 'btn btn-info'  %>
+<%= link_to '新しくタグを追加する', new_tag_path, class: 'btn btn-info'  %>
 <%= link_to "作成日時順にする", tasks_path(sort_created: "true"), class: 'btn btn-info'  %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class: 'btn btn-info'  %>
 <%= link_to "優先度でソートする", tasks_path(priority: "true"), class: 'btn btn-info'  %>
