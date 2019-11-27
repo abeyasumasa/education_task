@@ -1,0 +1,18 @@
+<%= form_with(model:@tag,local: true) do |form| %>
+    <% if @tag.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @tag.errors.count %>件のエラーがあります。</h2>
+        <ul>
+        <% @tag.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="title">
+      <%= form.label :title %>
+      <%= form.text_field :title, id: 'title'%>
+    </div>
+    <%= form.submit"タグを登録する" %>
+  <% end %>

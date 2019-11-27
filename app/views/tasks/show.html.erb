@@ -4,5 +4,11 @@
 <p><%= t('view.content') %>: <%= @task.content %></p>
 <p><%= t('view.expiration_date') %>: <%= simple_time(@task.expiration_date)%></p>
 <p><%= t('view.priority') %>: <%= @task.priority %></p>
+<p>
+  <%= t('view.tag') %>:
+      <% @task.tags.each do |tag| %>
+        <%= tag.title %>
+      <% end %>
+</p>
 
 <%= link_to 'タスク一覧画面に戻る', tasks_path %>

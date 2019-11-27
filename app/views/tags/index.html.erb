@@ -1,0 +1,18 @@
+<h1>タグ一覧</h1>
+
+<table>
+  <tr>
+    <th>タイトル</th>
+  </tr>
+
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.title %></td>
+    <td><%= link_to '編集', edit_tag_path(tag.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to '削除', tag_path(tag.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '新しくタグ追加する', new_tag_path, class: 'btn btn-info'  %>
+<%= link_to 'タスク一覧画面に戻る', tasks_path, class: 'btn btn-info' %>

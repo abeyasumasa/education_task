@@ -31,6 +31,11 @@
     <label><%= t('view.priority') %></label>
     <%= form.select :priority ,Task.priorities.keys, :selected=>Task.priorities[@task.priority] %>
   </div>
+
+  <div class="task_tag">
+    <label><%= t('view.tag') %></label>
+    <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :title) %>
+  </div>
   <%= form.submit %>
 <% end %>
 

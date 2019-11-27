@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @tag = Tag.all
   end
 
   def create
@@ -45,7 +46,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :expiration_date, :state, :priority, :user_id)
+    params.require(:task).permit(:name, :content, :expiration_date, :state, :priority, :user_id, {tag_ids: []} )
   end
 
   def set_task
